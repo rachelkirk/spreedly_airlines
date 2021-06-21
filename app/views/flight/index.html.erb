@@ -1,0 +1,32 @@
+<h1>Spreedly Airlines - You're gonna go on vacation and you're gonna like it!</h1>
+
+<br/>
+
+<h1>Flights</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Route Number</th>
+      <th>Departure</th>
+      <th>Destination</th>
+      <th>Price</th>
+      <th>Book</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flights.each do |flight| %>
+      <tr>
+        <td><%= flight.route_number %></td>
+        <td><%= flight.departure %></td>
+        <td><%= flight.destination %></td>
+        <td><%= flight.price %></td>
+       <td><a href="/flights/<%= flight.id%>"><button id= <%= flight.id%>>Book Flight</button></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
