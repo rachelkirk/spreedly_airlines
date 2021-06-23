@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # use command bin/rails routes to inspect all routes mapped
   # come back to rails guides section 6.2
   resources :transactions
+  post "/checkout", to: "transactions#checkout"
 end

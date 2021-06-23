@@ -23,10 +23,19 @@ SpreedlyExpress.onPaymentMethod(function(token, paymentMethod) {
   masterForm.submit();
 });
 </script>
-
-<form id="payment-form" action="/transactions/checkout"> <!--change redirect later-->
+ 
+ 
+ <%= form_with id:"payment-form", url:"/checkout", method: :post do |form| %>
+<!--<form  action="/checkout" method="POST"> change redirect later-->
   <input type="hidden" name="payment_method_token" id="payment_method_token">
   <input type="button" value="Enter Payment Info" onclick="SpreedlyExpress.openView();">
-  <input type="hidden" name="payment_type" id="Spreedly" value="Spreedly">
-</form>
+  <!--<input type="hidden" name="payment_type" id="Spreedly" value="Spreedly"> 
+  <label for="retain_payment">
+    <input id="retain_payment" type="checkbox" name="retain_payment">
+    Save payment details?</label>
+  <label for="expedia_payment">
+    <input id="expedia_payment" type="checkbox" name="expedia_payment">
+    Would you like to check out with Expedia?</label> -->
+<%end%>
+
 
