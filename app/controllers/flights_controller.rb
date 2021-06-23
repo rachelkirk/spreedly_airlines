@@ -1,6 +1,7 @@
-class FlightController < ApplicationController
+class FlightsController < ApplicationController
   def index
     @flights = Flight.all
+    
   end
 
   def show

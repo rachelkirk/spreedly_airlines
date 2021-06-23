@@ -1,0 +1,32 @@
+<h1>Destination: <%= @flight.destination %></h1>
+
+<p> Route Number: <%= @flight.route_number %></p>
+<p> Departure From: <%= @flight.departure%></p>
+<p> Price: <%= @flight.price%></p>
+
+<script src="https://core.spreedly.com/iframe/express-2.min.js"></script>
+
+<script>
+SpreedlyExpress.init("FqufO3eWO8igbhVEn6BpIXcSpzT", {
+  "amount": "$<%= @flight.price %>",
+  "company_name": "Spreedly"
+});
+
+SpreedlyExpress.onPaymentMethod(function(token, paymentMethod) {
+
+  // Send requisite payment method info to backend
+  var tokenField = document.getElementById("payment_method_token");
+
+  tokenField.setAttribute("value", token);
+
+  var masterForm = document.getElementById('payment-form');
+  masterForm.submit();
+});
+</script>
+
+<form id="payment-form" action="/transactions/checkout"> <!--change redirect later-->
+  <input type="hidden" name="payment_method_token" id="payment_method_token">
+  <input type="button" value="Enter Payment Info" onclick="SpreedlyExpress.openView();">
+  <input type="hidden" name="payment_type" id="Spreedly" value="Spreedly">
+</form>
+
